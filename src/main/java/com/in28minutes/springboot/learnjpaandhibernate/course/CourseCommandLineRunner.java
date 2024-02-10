@@ -6,13 +6,18 @@ import org.springframework.stereotype.Component;
 
 import com.in28minutes.springboot.learnjpaandhibernate.course.jdbc.CourseJdbcRepository;
 import com.in28minutes.springboot.learnjpaandhibernate.course.jpa.CourseJpaRepository;
+import com.in28minutes.springboot.learnjpaandhibernate.course.springdatajpa.CourseSpringDataJpaRepository;
 
 @Component
 public class CourseCommandLineRunner implements CommandLineRunner {
 	@Autowired
 	private CourseJdbcRepository repository;
 	
-	@Autowired CourseJpaRepository jpa_repository;
+	@Autowired 
+	CourseJpaRepository jpa_repository;
+	
+	@Autowired 
+	CourseSpringDataJpaRepository springdataRepository;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -30,6 +35,15 @@ public class CourseCommandLineRunner implements CommandLineRunner {
 		
 		System.out.println(jpa_repository.findById(6));
 		jpa_repository.deleteById(5);
+		
+		springdataRepository.save(new CourseJPA(8,"Learn to Code","in28minutes"));
+		springdataRepository.save(new CourseJPA(9,"Learn to GUI","in28minutes"));
+		springdataRepository.save(new CourseJPA(10,"Learn to Test","in28minutes"));
+		springdataRepository.deleteById(10L);
+		System.out.println(springdataRepository.findById(8L) );
+		System.out.println( springdataRepository.findById(9L));
+		System.out.println( springdataRepository.findAll());
+		
 	}
 
 }
