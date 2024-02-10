@@ -30,7 +30,7 @@ public class CourseCommandLineRunner implements CommandLineRunner {
 		System.out.println( repository.findById(1));
 		
 		jpa_repository.insert(new CourseJPA(5,"Learn to fly","in28minutes"));
-		jpa_repository.insert(new CourseJPA(6,"Learn to drive","in28minutes"));
+		jpa_repository.insert(new CourseJPA(6,"Learn to drive","Dane"));
 		jpa_repository.insert(new CourseJPA(7,"Learn to swim","in28minutes"));
 		
 		System.out.println(jpa_repository.findById(6));
@@ -38,11 +38,13 @@ public class CourseCommandLineRunner implements CommandLineRunner {
 		
 		springdataRepository.save(new CourseJPA(8,"Learn to Code","in28minutes"));
 		springdataRepository.save(new CourseJPA(9,"Learn to GUI","in28minutes"));
-		springdataRepository.save(new CourseJPA(10,"Learn to Test","in28minutes"));
+		springdataRepository.save(new CourseJPA(10,"Learn to Test","Dane"));
 		springdataRepository.deleteById(10L);
 		System.out.println(springdataRepository.findById(8L) );
 		System.out.println( springdataRepository.findById(9L));
 		System.out.println( springdataRepository.findAll());
+		System.out.println( springdataRepository.findByAuthor("in28minutes"));
+		System.out.println( springdataRepository.findByAuthor("Dane"));
 		
 	}
 
