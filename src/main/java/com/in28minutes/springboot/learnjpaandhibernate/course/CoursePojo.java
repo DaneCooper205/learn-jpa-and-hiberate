@@ -1,15 +1,15 @@
 package com.in28minutes.springboot.learnjpaandhibernate.course;
 
-public class Course {
+public class CoursePojo {
 	private long id;
 	private String name;
 	private String author;
 
-	public Course() {
+	public CoursePojo() {
 
 	}
 
-	public Course(long id, String name, String author) {
+	public CoursePojo(long id, String name, String author) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -18,7 +18,7 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", name=" + name + ", author=" + author + "]";
+		return "CoursePojo [id=" + id + ", name=" + name + ", author=" + author + "]";
 	}
 
 	public void setId(long id) {

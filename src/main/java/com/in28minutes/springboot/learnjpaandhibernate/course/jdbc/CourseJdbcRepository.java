@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.in28minutes.springboot.learnjpaandhibernate.course.Course;
+import com.in28minutes.springboot.learnjpaandhibernate.course.CoursePojo;
 
 @Repository
 public class CourseJdbcRepository {
@@ -33,7 +33,7 @@ public class CourseJdbcRepository {
 		springJdbcTemplate.update(INSERT_QUERY );
 	}
 	
-	public void insert(Course course) {
+	public void insert(CoursePojo course) {
 		springJdbcTemplate.update(INSERT_QUERY_PARAM, course.getId(), course.getName(), course.getAuthor() );
 	}
 	
@@ -41,7 +41,7 @@ public class CourseJdbcRepository {
 		springJdbcTemplate.update( DELETE_QUERY_PARAM, id);
 	}
 	
-	public Course findById( long id) {
-		return springJdbcTemplate.queryForObject(SELECT_QUERY_PARAM, new BeanPropertyRowMapper<>(Course.class ), id);
+	public CoursePojo findById( long id) {
+		return springJdbcTemplate.queryForObject(SELECT_QUERY_PARAM, new BeanPropertyRowMapper<>(CoursePojo.class ), id);
 	}
 }
